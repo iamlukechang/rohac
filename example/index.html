@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+  <title>AC MVC</title>
+  <style>
+    div[rh-scope] {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    rohac.ready(function () {
+      console.log('rohac is ready!');
+    });
+  </script>
+</head>
+<body>
+  <div rh-scope>
+    <h1>Mustache Syntax</h1>
+    {{a = 0}}
+    {{b = "a string"}}
+    {{c = [1, 2, 3, 4, 5]}}
+    {{d = {"num": 0, "str": "a string", "arr": [1, 2, 3, 4, {"obj": "an object"}]}}}
+    <ul>
+      <li>a = {{a}}</li>
+      <li>b = {{b}}</li>
+      <li>c = {{c}}</li>
+      <li>c[0] = {{c[0]}}</li>
+      <li>d = {{d}}</li>
+      <li>d.num = {{d.num}}</li>
+      <li>d.str = {{d.str}}</li>
+      <li>d.arr = {{d.arr}}</li>
+      <li>d.arr[4].obj = {{d.arr[4].obj}}</li>
+      <li>c[0] + d.arr[3] = {{c[0] + d.arr[3]}}</li>
+      <li>e = {{e}}</li>
+    </ul>
+  </div>
+  <div rh-scope>
+    <h1>Global Model & Scope Tree</h1>
+    a = {{a}}
+    <div rh-scope>
+      {{a = 0}}
+      a = {{a}}
+      <div rh-scope>
+        {{a = 1}}
+        a = {{a}}
+      </div>
+      a = {{a}}
+      <div rh-scope>
+        a = {{a}}
+      </div>
+    </div>
+    a = {{a}}		
+  </div>
+  <div rh-scope>
+    <h1>Arithmetic</h1>
+    {{a = 1}}
+    {{b = 2}}
+    {{c = 3}}
+    {{d = 4}}
+    - 4 / (1 - (6 / -2)) = {{- 4 / (1 - (6 / -2))}} <br />
+    d + c / (d - c) * b - 10 + a = {{d + c / (d - c) * b - 10 + a}}
+  </div>
+  <div rh-scope>
+    <h1>Template Repeat</h1>
+    {{a = {"person": [{"name": "John"}, {"name": "James"}, {"name": "Jack"}], "contry": ["U.S.A.", "Germany", "Canada"]}}}
+    <ul rh-scope rh-repeat>
+      <li>a.person.name = {{a.person[?].name}}, a.contry = {{a.contry[?]}}</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+  <title>AC MVC</title>
+  <style>
+    div[rh-scope] {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+  <script src="rohac.js"></script><script>
+    rohac.ready(function () {
+      console.log('rohac is ready!');
+    });
+  </script>
+</head>
+<body>
+  <div rh-scope="0">
+    <h1>Mustache Syntax</h1>
+    
+    
+    
+    
+    <ul>
+      <li>a = 0</li>
+      <li>b = a string</li>
+      <li>c = [1,2,3,4,5]</li>
+      <li>c[0] = 1</li>
+      <li>d = {"num":0,"str":"a string","arr":[1,2,3,4,{"obj":"an object"}]}</li>
+      <li>d.num = 0</li>
+      <li>d.str = a string</li>
+      <li>d.arr = [1,2,3,4,{"obj":"an object"}]</li>
+      <li>d.arr[4].obj = an object</li>
+      <li>c[0] + d.arr[3] = 5</li>
+      <li>e = </li>
+    </ul>
+  </div>
+  <div rh-scope="1">
+    <h1>Global Model &amp; Scope Tree</h1>
+    a = 
+    <div rh-scope="2">
+      
+      a = 0
+      <div rh-scope="3">
+        
+        a = 1
+      </div>
+      a = 0
+      <div rh-scope="4">
+        a = 0
+      </div>
+    </div>
+    a = 		
+  </div>
+  <div rh-scope="5">
+    <h1>Arithmetic</h1>
+    
+    
+    
+    
+    - 4 / (1 - (6 / -2)) = -1 <br>
+    d + c / (d - c) * b - 10 + a = 1
+  </div>
+  <div rh-scope="6">
+    <h1>Template Repeat</h1>
+    
+    <ul rh-scope="7" rh-repeat="">
+      <li>a.person.name = John, a.contry = U.S.A.</li>
+    
+      <li>a.person.name = James, a.contry = Germany</li>
+    
+      <li>a.person.name = Jack, a.contry = Canada</li>
+    </ul>
+  </div>
+</body>
+</html>
