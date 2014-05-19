@@ -34,11 +34,11 @@
       <li>d.arr = {{d.arr}}</li>
       <li>d.arr[4].obj = {{d.arr[4].obj}}</li>
       <li>c[0] + d.arr[3] = {{c[0] + d.arr[3]}}</li>
-      <li>e = {{e}}</li>
     </ul>
   </div>
   <div rh-scope>
     <h1>Global Model & Scope Tree</h1>
+    {{a = "The highest one in this scope!"}}
     a = {{a}}
     <div rh-scope>
       {{a = 0}}
