@@ -70,5 +70,11 @@
       <li>a.person.name = {{a.person[?].name}}, a.contry = {{a.contry[?]}}</li>
     </ul>
   </div>
+  <div rh-scope>
+    <h1>Runtime Update</h1>
+    {{a = 0}}
+    a = {{a}} 
+    <p>Open the console in the browser, and type "rohac.update({id: 8, content: {a: 1}})". And you will see the "a" in this scope is changed to 1.</p>
+  </div>
 </body>
 </html>

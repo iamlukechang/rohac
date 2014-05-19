@@ -46,7 +46,11 @@ rohac = {
   read: function () {
   },
   // TODO: make update API
-  update: function () {
+  update: function (query) {
+    for (var p in query.content) {
+      this.model.scopes[query.id][p] = query.content[p];
+    }
+    this.controller.compile(query.id, this.view, this.model, 'loopChildren');
   },
   // TODO: make remove API 
   remove: function () {
@@ -56,9 +60,5 @@ rohac = {
 ##fill##
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM is ready!');
   rohac.init();
 });
-window.onload = function () {
-  console.log('window is loaded!');
-};
