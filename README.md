@@ -8,9 +8,10 @@ A two-way databinding tool
 `$ npm install`
 
 ## Demo
-In the project directory you just cloned, run
+First, take a look at the example/index.html, you will see lot's of double braces in the html.
+Now, run:
 
 `$ node index.js`
 
-and see the magic happened in the ./build directory
+and see the magic happened in the build directory
 
