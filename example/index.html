@@ -36,9 +36,8 @@
       <li>c[0] + d.arr[3] = {{c[0] + d.arr[3]}}</li>
     </ul>
   </div>
-  <div rh-scope>
+  <div rh-scope rh-model="demo.json">
     <h1>Global Model & Scope Tree</h1>
-    {{a = "The highest one in this scope!"}}
     a = {{a}}
     <div rh-scope>
       {{a = 0}}
@@ -49,6 +48,9 @@
       </div>
       a = {{a}}
       <div rh-scope>
+        a = {{a}}
+      </div>
+      <div rh-scope rh-model="another.json">
         a = {{a}}
       </div>
     </div>
