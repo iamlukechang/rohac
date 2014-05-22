@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
-  <title>AC MVC</title>
+  <title>Rohac Demo</title>
   <style>
     div[rh-scope] {
       margin: 10px;
@@ -70,6 +70,35 @@
     {{a = {"person": [{"name": "John"}, {"name": "James"}, {"name": "Jack"}], "contry": ["U.S.A.", "Germany", "Canada"]}}}
     <ul rh-scope rh-repeat>
       <li>a.person.name = {{a.person[?].name}}, a.contry = {{a.contry[?]}}</li>
+    </ul>
+  </div>
+  <div rh-scope>
+    <h1>Attribute & Style</h1>
+    {{style = "width: 100px; height: 100px; background: #000; display: inline-block;"}}
+    <div style="{{style}}"></div>
+    {{dimension = "98px"}}
+    {{border = "1px solid #000"}}
+    {{background = "background: #ccc;"}}
+    <style>
+      .style1 {
+        width: '{{dimension}}';
+        height: '{{dimension}}';
+        border: '{{border}}';
+        display: inline-block;
+        '{{background}}'
+      }
+    </style>
+    <div class="style1"></div>
+    {{repeatstyle = {"index": [1, 2, 3], "color": ["red", "blue", "green"]}}}
+    <style rh-scope rh-repeat>
+      .style2 li:nth-child('{{repeatstyle.index[?]}}') {
+        color: '{{repeatstyle.color[?]}}';
+      }
+    </style>
+    <ul class="style2">
+      <li>I'm red</li>
+      <li>I'm blue</li>
+      <li>I'm green</li>
     </ul>
   </div>
   <div rh-scope>
