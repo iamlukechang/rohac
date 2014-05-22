@@ -1,0 +1,5 @@
+<div rh-scope>
+  <h1>Including html</h1>
+  {{a = "I'm from demo.rh, and I'm actually an html string. I can create a scope, because the rohac initialization happens after including all external rh files."}}
+  <p>a = {{a}}</p>
+</div>
