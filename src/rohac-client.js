@@ -15,9 +15,28 @@ rohac = {
   },
   init: function () {
     var targets = this.view.targets;
-    var targetsLen = targets.length;
-    for (var i = 0; i < targetsLen; i++) {
+    var scope;
+    var len = targets.length; // this is also scopes length
+    for (var i = 0; i < len; i++) {
       targets[i] = this.getDom(document.querySelector('[rh-scope="' + i + '"]'), targets[i]);
+      scope = this.model.scopes[i];
+
+      Object.defineProperties(scope, {
+        "_id": {enumerable: false},
+        "_parentId": {enumerable: false},
+        "_childrenIds": {enumerable: false},
+        "_type": {enumerable: false}
+      });
+
+      for (var p in scope) {
+        this.watcher(scope, p, function (oldVal, newVal) {
+          var _id = this._id;
+          // TODO: create a scope property value to template map
+          setTimeout(function () { // the watch "callback" is actually fired before the property is set, so use a setTimeout for a bit delay for now
+            rohac.controller.compile(_id, rohac.view, rohac.model, 'loopChildren');
+          }, 50);
+        });
+      }
     }
 
     if (this.readyCallback) this.readyCallback();
@@ -45,12 +64,10 @@ rohac = {
   // TODO: make read API
   read: function () {
   },
-  // TODO: make update API
   update: function (query) {
     for (var p in query.content) {
       this.model.scopes[query.id][p] = query.content[p];
     }
-    this.controller.compile(query.id, this.view, this.model, 'loopChildren');
   },
   // TODO: make remove API 
   remove: function () {
